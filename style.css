@@ -41,12 +41,19 @@ html {
   text-transform: capitalize;
   text-align: center;
 }
+.warning {
+  text-align: center;
+}
 
+.warning>b {
+  color: white;
+  font-size: 15px;
+}
 .link {
   display: flex;
   justify-content: center;
   flex-direction: column;
-  padding: 20px;
+  padding: 15px;
 }
 
 .link>a {
@@ -66,7 +73,6 @@ html {
 .link>a:hover {
   background-color: azure;
 }
-
 .footer {
   text-align: center;
 }
