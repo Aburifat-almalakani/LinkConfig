@@ -30,26 +30,30 @@
       margin-bottom:.5rem;
       font-weight:600;
     }
-    select {
+    select, button {
       width:100%;
       padding:.75rem 1rem;
       border-radius:8px;
-      background:#0f1432;
-      border:1px solid rgba(255,255,255,.1);
-      color:#f0f2f9;
+      border:none;
       font-size:1rem;
+      margin-top:.25rem;
+    }
+    select {
+      background:#0f1432;
+      color:#f0f2f9;
+      border:1px solid rgba(255,255,255,.1);
       appearance:none;
     }
     button {
-      margin-top:1rem;
-      width:100%;
-      padding:.75rem;
-      border:none;
-      border-radius:8px;
       background:#6c63ff;
       color:#fff;
-      font-weight:600;
       cursor:pointer;
+      font-weight:600;
+      margin-top:0.75rem;
+    }
+    button:disabled {
+      opacity:.5;
+      cursor:not-allowed;
     }
     .note {
       font-size:.85rem;
@@ -64,26 +68,18 @@
       opacity:.7;
       text-align:center;
     }
-    a {
-      color:#6c63ff;
-      text-decoration:none;
-    }
+    a { color:#6c63ff; text-decoration:none; }
   </style>
 </head>
 <body>
   <div class="box">
     <div class="note">
-      <strong>Perhatian:</strong> Pilih config HC atau Dark sesuai nama, cek huruf terakhir agar tidak salah.
+      <strong>Perhatian:</strong> Pilih config HC atau Dark sesuai nama. Cek huruf terakhir agar tidak salah.
     </div>
 
     <label for="configSelect">Pilih konfigurasi:</label>
     <select id="configSelect">
       <option value="">-- pilih config --</option>
-      <option value="https://sfile.mobi/bsGvtdkviS7">Edukasi_Hc</option>
-      <option value="">Edukasi_dark</option>
-      <option value="">Game_Hc</option>
-      <option value="">Game_dark</option>
-      <!-- tambahkan sesuai kebutuhan -->
     </select>
     <button id="openBtn" disabled>Buka / Download</button>
 
@@ -97,17 +93,34 @@
   </div>
 
   <script>
+    // ---- isi di sini dengan link sfilemobi kamu ----
+    const configs = [
+      { name: 'Edukasi_Hc', url: 'https://sfilemobi[ISI_LINK_EDUKASI_HC]' },
+      { name: 'Edukasi_dark', url: 'https://sfilemobi[ISI_LINK_EDUKASI_DARK]' },
+      { name: 'Game_Hc', url: 'https://sfilemobi[ISI_LINK_GAME_HC]' },
+      { name: 'Game_dark', url: 'https://sfilemobi[ISI_LINK_GAME_DARK]' },
+      // tambahkan sesuai kebutuhan
+    ];
+
     const select = document.getElementById('configSelect');
     const btn = document.getElementById('openBtn');
+
+    // generate opsi
+    configs.forEach(c => {
+      const opt = document.createElement('option');
+      opt.value = c.url;
+      opt.textContent = c.name;
+      select.appendChild(opt);
+    });
 
     select.addEventListener('change', () => {
       btn.disabled = !select.value;
     });
 
     btn.addEventListener('click', () => {
-      if (select.value) {
-        window.open(select.value, '_blank', 'noopener');
-      }
+      if (!select.value) return;
+      // buka di tab baru
+      window.open(select.value, '_blank', 'noopener');
     });
   </script>
 </body>
