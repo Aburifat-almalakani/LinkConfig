@@ -1,41 +1,140 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-      href="https://fonts.googleapis.com/css2?family=Rubik+Maps&display=swap" rel="stylesheet">
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
-      />
-    <title>TELKOMSEL</title>
-  </head>
-  <body>
-    <div class="container animate__animated animate__zoomIn">
-      <div class="warning">
-        <b>Pada Kolom Dibawah Tersedia 2 Config Hc & Drak Tunnel. Jadi Perhatikan Huruf, Yg Paling Belakang Biar Tidak Salah Downloade</b>
-      </div>
-      <!-- link tree button -->
-      <div class="link">
-        <a href="https://sfile.mobi/2aeB3VKimc1" target="_blank">opok_hc</a>
-        <a href="https://sfile.mobi/a9aFvOhbfUG" target="_blank">opok_dark</a>
-        <a href="" target="_blank">ruangguru_hc</a>
-        <a href="" target="_blank">ruangguru_dark</a>
-        <a href="https://sfile.mobi/4xYCnFCfIAy" target="_blank">ilmupedia_hc</a>
-        <a href="https://sfile.mobi/7SOEfYl1Cwa" target="_blank">ilmupedia_dark</a>
-      </div>
-      <!-- footer -->
-      <div class="footer animate__animated animate__bounceInUp
-        animate__delay-1s">
-        <i>ABURIFAT AL-MALAKANI</i>
-      </div>
-      <div class="list">
-        <a href="https://wa.link/eny062">pesan config perbayar</a>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>AXIS - Pilih Config</title>
+  <style>
+    body {
+      font-family: system-ui,-apple-system,BlinkMacSystemFont,sans-serif;
+      background:#101227;
+      color:#e8ecf8;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      padding:2rem 1rem;
+      gap:1rem;
+      min-height:100vh;
+      margin:0;
+    }
+    .box {
+      width:100%;
+      max-width:500px;
+      background:#1e2345;
+      padding:1rem 1.25rem;
+      border-radius:12px;
+      box-shadow:0 20px 50px -10px rgba(108,99,255,.25);
+    }
+    label {
+      display:block;
+      margin-bottom:.5rem;
+      font-weight:600;
+    }
+    select, button {
+      width:100%;
+      padding:.75rem 1rem;
+      border-radius:8px;
+      border:none;
+      font-size:1rem;
+      margin-top:.25rem;
+    }
+    select {
+      background:#0f1432;
+      color:#f0f2f9;
+      border:1px solid rgba(255,255,255,.1);
+      appearance:none;
+    }
+    button {
+      background:#6c63ff;
+      color:#fff;
+      cursor:pointer;
+      font-weight:600;
+      margin-top:0.75rem;
+    }
+    button:disabled {
+      opacity:.5;
+      cursor:not-allowed;
+    }
+    .note {
+      font-size:.85rem;
+      background: rgba(255,255,255,.05);
+      padding:.6rem .8rem;
+      border-radius:6px;
+      margin-bottom:1rem;
+    }
+    .footer {
+      margin-top:auto;
+      font-size:.7rem;
+      opacity:.7;
+      text-align:center;
+    }
+    a { color:#6c63ff; text-decoration:none; }
+  </style>
+</head>
+<body>
+  <div class="box">
+    <div class="note">
+      <strong>Perhatian:</strong> Pilih config HC atau Dark sesuai nama. Cek huruf terakhir agar tidak salah.
     </div>
-  </body>
+
+    <label for="configSelect">Pilih konfigurasi:</label>
+    <select id="configSelect">
+      <option value="">-- pilih config --</option>
+    </select>
+    <button id="openBtn" disabled>Buka / Download</button>
+
+    <p style="margin-top:1rem;">
+      Ingin config berbayar? <a href="https://wa.link/eny062" target="_blank" rel="noopener">Pesan di WhatsApp</a>
+    </p>
+  </div>
+
+  <div class="footer">
+    ABURIFAT AL-MALAKANI
+  </div>
+
+  <script>
+    // ---- isi di sini dengan link sfilemobi kamu ----
+    const configs = [
+      { name: 'Edukasi_Hc', url: 'https://sfile.' },
+      { name: 'Game_Hc', url: 'https://sfile.mobi/' },      
+      { name: 'Chat_Hc', url: 'https://sfile.mobi/' },      
+      { name: 'Instagram_Hc', url: 'https://sfile.mobi/' },     
+      { name: 'Netflix_Hc', url: 'https://sfile.mobi/' },     
+      { name: 'Spotify_Hc', url: 'https://sfile.mobi/' },
+      { name: 'Tiktok_Hc', url: 'https://sfile.mobi/' },
+      { name: 'Opok_Hc', url: 'https://sfile.mobi/' },
+
+      { name: 'Edukasi_dark', url: 'https://sfile.mobi/xxxxxxx' },
+      { name: 'Edukasi_dark', url: 'https://sfile.mobi/xxxxxxx' },
+      { name: 'Edukasi_dark', url: 'https://sfile.mobi/xxxxxxx' },
+      { name: 'Edukasi_dark', url: 'https://sfile.mobi/xxxxxxx' },
+      { name: 'Edukasi_dark', url: 'https://sfile.mobi/xxxxxxx' },
+      { name: 'Edukasi_dark', url: 'https://sfile.mobi/xxxxxxx' },
+      { name: 'Edukasi_dark', url: 'https://sfile.mobi/xxxxxxx' },
+      { name: 'Edukasi_dark', url: 'https://sfile.mobi/xxxxxxx' },
+      // tambahkan sesuai kebutuhan
+    ];
+
+    const select = document.getElementById('configSelect');
+    const btn = document.getElementById('openBtn');
+
+    // generate opsi
+    configs.forEach(c => {
+      const opt = document.createElement('option');
+      opt.value = c.url;
+      opt.textContent = c.name;
+      select.appendChild(opt);
+    });
+
+    select.addEventListener('change', () => {
+      btn.disabled = !select.value;
+    });
+
+    btn.addEventListener('click', () => {
+      if (!select.value) return;
+      // buka di tab baru
+      window.open(select.value, '_blank', 'noopener');
+    });
+  </script>
+</body>
 </html>
